@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       end
       scope 'languages' do
         get 'index', to: 'languages#index'
+        patch 'update/:id', to: 'languages#update'
         post 'create', to: 'languages#create'
         delete 'delete/:id', to: 'languages#delete'
       end

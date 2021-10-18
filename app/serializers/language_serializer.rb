@@ -4,8 +4,12 @@ class LanguageSerializer < ActiveModel::Serializer
   attributes :id, :name, :teacher_id , :docs_url
 
   def docs_url
-    if object.lan_docs.attached?
-      rails_blob_path(object.lan_docs, only_path = true)
+    if object.docs.attached?
+      array = []
+      object.docs.each do |doc|
+        array.append(rails_blob_path(doc, only_path: true))
+      end
+      return array
     else
       nil
     end

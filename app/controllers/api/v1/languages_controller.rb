@@ -15,6 +15,13 @@ class Api::V1::LanguagesController < ApplicationController
     end
 
 
+    def update
+        language = Language.find(params[:id])
+        language.update!
+    rescue StandardError => e
+        render json: { message: e.message }, status: :unprocessable_entity
+    end
+    
 
     def delete
         language = Language.find(params[:id])
@@ -30,7 +37,7 @@ class Api::V1::LanguagesController < ApplicationController
         params.require(:language).permit(
             :name,
             :teacher_id,
-            lan_docs: []
+            docs: []
         )
     end
 end

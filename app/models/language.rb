@@ -3,5 +3,5 @@ class Language < ApplicationRecord
   
   validates :name, presence: true
 
-  has_many_attached :lan_docs
+  has_many_attached :docs
 end

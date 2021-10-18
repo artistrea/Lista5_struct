@@ -21,7 +21,7 @@ class Api::V1::TeachersController < ApplicationController
         render json: {message: e.message}, status: :unprocessable_entity
     end
 
-    def update
+    def  update
         teacher = Teacher.find(params[:id])
         teacher.update!(teacher_params)
         render json: teacher, status: :ok
